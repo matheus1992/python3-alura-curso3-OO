@@ -1,27 +1,20 @@
 class Conta:
     def __init__(self, numero, titular, saldo, limite):
         print("Construindo objeto... {}".format(self))
-        self.numero = numero
-        self.titular = titular
-        self.saldo = saldo
-        self.limite = limite
+        self.__numero = numero
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__limite = limite
 
     def extrato(self):
-        print("Saldo {} do titular {}".format(self.saldo, self.titular))
+        print("Saldo {} do titular {}".format(self.__saldo, self.__titular))
 
-    def deposita(self, valor):
-        self.saldo += valor
+    def depositar(self, valor):
+        self.__saldo += valor
 
-    def saca(self, valor):
-        self.saldo -= valor
+    def sacar(self, valor):
+        self.__saldo -= valor
 
-
-'''
-def cria_conta(numero, titular, saldo, limite):
-   conta = {"numero": numero, "titular": titular, "saldo": saldo, "limite": limite}
-   return conta
-
-
-
-
-'''
+    def transferir(self, valor, destinatario):
+        self.sacar(valor)
+        destinatario.depositar(valor)
